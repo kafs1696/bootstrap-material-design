@@ -101,6 +101,9 @@
       // Add fake-checkbox to material checkboxes
       var $input = $((selector) ? selector : this.options.checkboxElements)
         .filter(":notmdproc")
+        .filter(function(){ //added this filter to skip checkboxes that were already initialized
+          return $(this).parent().find(".checkbox").length === 0;
+        })
         .data("mdproc", true)
         .after("<span class='checkbox-material'><span class='check'></span></span>");
 
